@@ -4,17 +4,13 @@ Feature: verify the home page
         Given we are present on the home page
         Then the page title is DemoStore – Just another WordPress site
 
-    Scenario Outline: check the home page tabs
+    Scenario: check the home page tabs
         Given we are present on the home page
-        Then the <tab_label> tab is present
-
-        Examples:
-        | tab_label   |
-        | Home        |
-        | Cart        |
-        | Checkout    |
-        | My account  |
-        | Sample Page |
+        Then the Home tab is present
+        And the Cart tab is present
+        And the Checkout tab is present
+        And the My account tab is present
+        And the Sample Page tab is present
 
     Scenario Outline: check navigation using tabs
         Given we are present on the home page
@@ -33,4 +29,4 @@ Feature: verify the home page
         Given we are present on the home page
         When we add random item to the cart
         Then the randomly selected item is in the cart
-        And there are 1 items in the cart
+        And there is 1 item in the cart
