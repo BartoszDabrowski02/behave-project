@@ -1,5 +1,6 @@
-from base.functions import get_element
+from selenium.common.exceptions import NoSuchElementException
 
+from base.functions import get_element
 
 DEFAULT_ASSERTION_MESSAGES = {
     "assert_element_is_visible": "We expect that element is visible.",
@@ -18,7 +19,9 @@ def assertion_message(assertion_name, *args, msg=None):
 
 
 def assert_element_is_present(context, locator_type, locator, msg=None):
-    if not get_element(context, locator_type, locator):
+    try:
+        get_element(context, locator_type, locator)
+    except NoSuchElementException:
         assertion_message("assert_element_is_present", msg=msg)
 
 
