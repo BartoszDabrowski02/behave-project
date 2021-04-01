@@ -4,13 +4,12 @@ from behave import when, then
 from selenium.common.exceptions import NoSuchElementException
 
 from base.assertions import assert_element_is_visible
+from base.functions import get_element
 
 
 @when("we click on {tab_label} tab")
 def click_on_tab(context, tab_label: str):
-    tab_selector = context.driver.find_element_by_xpath(
-        f".//ul[@class='nav-menu']//a[text()='{tab_label}']"
-    )
+    tab_selector = get_element(context, 'xpath', f".//ul[@class='nav-menu']//a[text()='{tab_label}']")
     tab_selector.click()
 
 
