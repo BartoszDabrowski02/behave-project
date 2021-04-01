@@ -3,6 +3,8 @@ import random
 from behave import when, then
 from selenium.common.exceptions import NoSuchElementException
 
+from base.assertions import assert_element_is_visible
+
 
 @when("we click on {tab_label} tab")
 def click_on_tab(context, tab_label: str):
@@ -53,10 +55,10 @@ def is_randomly_selected_item_in_the_cart(context):
 
 @then("the {tab_label} tab is present")
 def tab_is_present(context, tab_label):
-    tab_selector = context.driver.find_element_by_xpath(
+    tab = context.driver.find_element_by_xpath(
         f".//ul[@class='nav-menu']//a[text()='{tab_label}']"
     )
-    tab_selector.is_displayed()
+    assert_element_is_visible(tab)
 
 
 @then("there are {items_in_cart} items in the cart")
