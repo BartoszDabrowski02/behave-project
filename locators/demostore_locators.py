@@ -26,5 +26,24 @@ OTHER_LOCATORS = {
         "type": "css",
         "locator": "a.cart-contents span.count",
     },
-
 }
+
+HOME_PAGE_LOCATORS = {
+    "products_on_the_page": {
+        "type": "xpath",
+        "locator": "//ul[@class='products columns-4']/li",
+    },
+    "product_number_x": {
+        "type": "xpath",
+        "locator": "//ul[@class='products columns-4']/li[{product_num}]",
+    },
+    "product_number_x_add_to_cart_button": {
+        "type": "xpath",
+        "locator": "//ul[@class ='products columns-4']/li[{product_num}]/a[text()='Add to cart']",
+    },
+    "product_in_cart_by_id": {
+        "type": "xpath",
+        "locator": ".//ul[contains(@class,'woocommerce-mini-cart')]//a[@data-product_id='{product_id}']",
+    },
+}
+
