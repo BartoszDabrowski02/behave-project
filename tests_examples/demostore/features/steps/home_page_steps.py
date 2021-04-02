@@ -49,7 +49,7 @@ def add_random_item_to_the_cart(context):
         try:
             element = get_element(
                 context,
-                HOME_PAGE_LOCATORS["product_number_x"]["type"],
+                HOME_PAGE_LOCATORS["product_number_x_add_to_cart_button"]["type"],
                 HOME_PAGE_LOCATORS["product_number_x_add_to_cart_button"][
                     "locator"
                 ].format(product_num=random_item),
@@ -71,8 +71,8 @@ def page_title(context, text: str):
 def is_randomly_selected_item_in_the_cart(context):
     assert_element_is_present(
         context,
-        HOME_PAGE_LOCATORS["product_in_cart_by_id"]["type"],
-        HOME_PAGE_LOCATORS["product_in_cart_by_id"]["locator"].format(
+        OTHER_LOCATORS["product_in_cart_by_id"]["type"],
+        OTHER_LOCATORS["product_in_cart_by_id"]["locator"].format(
             product_id=context.elements_id
         ),
     )

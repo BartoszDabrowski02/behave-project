@@ -26,6 +26,10 @@ OTHER_LOCATORS = {
         "type": "css",
         "locator": "a.cart-contents span.count",
     },
+    "product_in_cart_by_id": {
+        "type": "xpath",
+        "locator": ".//ul[contains(@class,'woocommerce-mini-cart')]//a[@data-product_id='{product_id}']",
+    },
 }
 
 HOME_PAGE_LOCATORS = {
@@ -41,9 +45,11 @@ HOME_PAGE_LOCATORS = {
         "type": "xpath",
         "locator": "//ul[@class ='products columns-4']/li[{product_num}]/a[text()='Add to cart']",
     },
-    "product_in_cart_by_id": {
-        "type": "xpath",
-        "locator": ".//ul[contains(@class,'woocommerce-mini-cart')]//a[@data-product_id='{product_id}']",
-    },
 }
 
+MY_ACCOUNT_PAGE_LOCATORS = {
+    "username input": {
+        "type": "css",
+        "locator": "input[name='username']",
+    },
+}
