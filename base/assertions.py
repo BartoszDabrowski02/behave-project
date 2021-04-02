@@ -5,6 +5,7 @@ from base.functions import get_element
 DEFAULT_ASSERTION_MESSAGES = {
     "assert_element_is_visible": "We expect that element is visible.",
     "assert_element_is_present": "We expect that element is present.",
+    "assert_text_equal": f"We expect that {0} text is equal to {1}."
 }
 
 
@@ -28,3 +29,8 @@ def assert_element_is_present(context, locator_type, locator, msg=None):
 def assert_element_is_visible(element, msg=None):
     if not element.is_displayed():
         assertion_message("assert_element_is_visible", msg=msg)
+
+
+def assert_text_equal(current_text, expected_text, msg=None):
+    if current_text != expected_text:
+        assertion_message("assert_text_equal", current_text, expected_text, msg=msg)

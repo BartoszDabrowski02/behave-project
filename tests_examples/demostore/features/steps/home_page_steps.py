@@ -3,17 +3,17 @@ import random
 from behave import when, then
 from selenium.common.exceptions import NoSuchElementException
 
-from base.assertions import assert_element_is_visible, assert_element_is_present
+from base.assertions import assert_element_is_visible, assert_element_is_present, assert_text_equal
 from base.functions import get_element, get_elements
-from locators.demostore_locators import HOME_PAGE_LOCATORS
+from locators.demostore_locators import NAVIGATION_BAR_LOCATORS, OTHER_LOCATORS
 
 
 @when("we click on {tab_label} tab")
 def click_on_tab(context, tab_label: str):
     tab_selector = get_element(
         context,
-        HOME_PAGE_LOCATORS[tab_label]["type"],
-        HOME_PAGE_LOCATORS[tab_label]["locator"],
+        NAVIGATION_BAR_LOCATORS[tab_label]["type"],
+        NAVIGATION_BAR_LOCATORS[tab_label]["locator"],
     )
     tab_selector.click()
 
@@ -72,6 +72,10 @@ def number_of_items_in_the_cart(context, items_in_cart: str):
 
 @then("there is 1 item in the cart")
 def one_item_in_the_cart(context):
-    items_in_cart_label = get_element(context, "css", "a.cart-contents span.count").text
+    items_in_cart_label = get_element(
+        context,
+        OTHER_LOCATORS["number_of_items_in_cart"]["type"],
+        OTHER_LOCATORS["number_of_items_in_cart"]["locator"],
+    ).text
     number_of_items = items_in_cart_label.split()[0]
-    assert "1" == number_of_items
+    assert_text_equal(number_of_items, "1")

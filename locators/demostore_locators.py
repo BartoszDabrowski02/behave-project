@@ -1,4 +1,4 @@
-HOME_PAGE_LOCATORS = {
+NAVIGATION_BAR_LOCATORS = {
     "Home": {
         "type": "xpath",
         "locator": ".//ul[@class='nav-menu']//a[text()='Home']",
@@ -19,4 +19,12 @@ HOME_PAGE_LOCATORS = {
         "type": "xpath",
         "locator": ".//ul[@class='nav-menu']//a[text()='Sample Page']",
     },
+}
+
+OTHER_LOCATORS = {
+    "number_of_items_in_cart": {
+        "type": "css",
+        "locator": "a.cart-contents span.count",
+    },
+
 }
