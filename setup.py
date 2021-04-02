@@ -4,5 +4,6 @@ setup(name='BehaveProject',
       version='1.0',
       packages=[
           'base',
+          'locators',
       ],
     )

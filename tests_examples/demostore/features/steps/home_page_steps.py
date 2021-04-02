@@ -5,12 +5,15 @@ from selenium.common.exceptions import NoSuchElementException
 
 from base.assertions import assert_element_is_visible, assert_element_is_present
 from base.functions import get_element, get_elements
+from locators.demostore_locators import HOME_PAGE_LOCATORS
 
 
 @when("we click on {tab_label} tab")
 def click_on_tab(context, tab_label: str):
     tab_selector = get_element(
-        context, "xpath", f".//ul[@class='nav-menu']//a[text()='{tab_label}']"
+        context,
+        HOME_PAGE_LOCATORS[tab_label]["type"],
+        HOME_PAGE_LOCATORS[tab_label]["locator"],
     )
     tab_selector.click()
 
