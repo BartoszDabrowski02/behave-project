@@ -5,7 +5,7 @@ from base.functions import get_element
 DEFAULT_ASSERTION_MESSAGES = {
     "assert_element_is_visible": "We expect that element is visible.",
     "assert_element_is_present": "We expect that element is present.",
-    "assert_text_equal": f"We expect that {0} text is equal to {1}."
+    "assert_text_equal": "We expect that '{}' text is equal to '{}'.",
 }
 
 

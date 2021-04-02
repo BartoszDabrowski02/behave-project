@@ -52,4 +52,20 @@ MY_ACCOUNT_PAGE_LOCATORS = {
         "type": "css",
         "locator": "input[name='username']",
     },
+    "new_account_password_input": {
+        "type": "xpath",
+        "locator": "//form[contains(@class,'woocommerce-form-register')]//span[@class='password-input']/input",
+    },
+    "new_account_password_statement": {
+        "type": "xpath",
+        "locator": "//form[contains(@class,'woocommerce-form-register')]//div[contains(@class,'woocommerce-password-strength')]",
+    },
+    "password_hint_label": {
+        "type": "css",
+        "locator": ".woocommerce-password-hint",
+    },
+    "password_label": {
+        "type": "xpath",
+        "locator": "//form[contains(@class,'woocommerce-form-register')]//label[@for='reg_password']",
+    },
 }
