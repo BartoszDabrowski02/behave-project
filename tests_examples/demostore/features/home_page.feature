@@ -1,4 +1,4 @@
-Feature: verify the home page
+Feature: Verify the home page
 
     Scenario: check the home page title
         Given we are present on the home page

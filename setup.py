@@ -5,5 +5,6 @@ setup(name='BehaveProject',
       packages=[
           'base',
           'locators',
+          'tests_examples.demostore.report'
       ],
     )
