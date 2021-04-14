@@ -12,6 +12,10 @@ Feature: Verify the home page
         And the My account tab is present
         And the Sample Page tab is present
 
+    Scenario: this test always fails
+        Given we are present on the home page
+        When test fails
+
     Scenario Outline: check navigation using tabs
         Given we are present on the home page
         When we click on <tab_label> tab
@@ -30,3 +34,7 @@ Feature: Verify the home page
         When we add random item to the cart
         Then the randomly selected item is in the cart
         And there is 1 item in the cart
+
+    Scenario: this test also always fails
+        Given we are present on the home page
+        When test fails
