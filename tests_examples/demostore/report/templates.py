@@ -10,10 +10,12 @@ def prepare_scenario_table_template(feature_scenarios):
     return scenarios_table
 
 
-def prepare_feature_table_template(feature_name, feature_status, feature_scenarios):
+def prepare_feature_table_template(
+    feature_name, feature_status, feature_scenarios, feature_pass_info
+):
     return f"""
     <tr class="feature-row {feature_status}">
-        <th>{feature_name}</th>
+        <th>{feature_name} {feature_pass_info['feature_passed_rate']}% ({feature_pass_info['scenarios_passed']}/{feature_pass_info['scenarios_number']})</th>
         <th>{feature_status}</th>
     </tr>
     {prepare_scenario_table_template(feature_scenarios)}

@@ -31,10 +31,30 @@ class raport_generator:
         self.features_passed_number = 0
         self.features_failed_number = 0
         self.features_passed_rate = 0
+        self.single_feature_pass_info = {}
         self.scenarios_number = 0
         self.scenarios_passed_number = 0
         self.scenarios_failed_number = 0
         self.scenarios_passed_rate = 0
+
+    def _single_feature_pass_rate(self, feature_data):
+        print(feature_data)
+        scenario_passed = 0
+        scenario_number = 0
+
+        for scenario in feature_data["scenarios"]:
+            if scenario["status"] == "passed":
+                scenario_passed += 1
+            scenario_number += 1
+
+        feature_pass_rate = {
+            feature_data["feature_name"]: {
+                "scenario_passed": scenario_passed,
+                "scenario_number": scenario_number,
+                "feature_pass_rate": scenario_passed / scenario_number * 100,
+            }
+        }
+        self.single_feature_pass_info.update(feature_pass_rate)
 
     def _count_features_passed_rate(self):
         self.features_passed_rate = round(
@@ -48,7 +68,9 @@ class raport_generator:
                 self.features_passed_number += 1
             elif feature["feature_status"] == "failed":
                 self.features_failed_number += 1
+            self._single_feature_pass_rate(feature)
         self._count_features_passed_rate()
+        print(self.single_feature_pass_info)
 
     def _count_scenarios_passed_rate(self):
         self.scenarios_passed_rate = round(
@@ -72,7 +94,9 @@ class raport_generator:
         report_data = prepare_data_for_report(reports)
         self._features_number_count(report_data)
         self._scenarios_number_count(report_data)
-        features_table = create_feature_table_row(report_data)
+        features_table = create_feature_table_row(
+            report_data, self.single_feature_pass_info
+        )
         report_html = prepare_report_html_template(
             features_table,
             self.scenarios_passed_rate,

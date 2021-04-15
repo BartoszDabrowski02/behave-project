@@ -21,10 +21,15 @@ def prepare_data_for_report(report_data):
     return formated_data
 
 
-def create_feature_table_row(formated_data):
+def create_feature_table_row(formated_data, single_feature_pass_info):
     feature_table_rows = ""
+    i = 0
     for feature in formated_data:
         feature_table_rows += prepare_feature_table_template(
-            feature["feature_name"], feature["feature_status"], feature["scenarios"]
+            feature["feature_name"],
+            feature["feature_status"],
+            feature["scenarios"],
+            single_feature_pass_info[feature["feature_name"]],
         )
+        i += 1
     return feature_table_rows
